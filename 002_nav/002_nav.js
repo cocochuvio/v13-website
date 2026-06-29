@@ -1,38 +1,28 @@
-// 002_nav/002_nav.js - 导航栏动态注入与智能路由
-
+// 002_nav/002_nav.js - 极致精简版导航
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. 极其纯净的 HTML 骨架（去掉了所有恶心的内联 style，全靠上面的 CSS 控制）
-    // 注意：给每个链接加了一个 data-page 属性，用来做身份识别
     const navHTML = `
-    <header class="global-navbar">
-        <a href="../003_index/index.html" class="nav-logo">🛡️ AEGIS TITAN</a>
+    <header class="global-navbar" style="position: sticky; top: 0; display: flex; justify-content: space-between; padding: 20px 40px; z-index: 2000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10, 1, 24, 0.7);">
+        <a href="../003_index/003_index.html" class="nav-logo" style="color: #fff; font-weight: bold; text-decoration: none; font-size: 20px; letter-spacing: 1px;">🛡️ CHUANIS</a>
         
-        <nav class="nav-center">
-            <a href="../003_index/index.html" data-page="index">Index</a>
-            <a href="../004_pricing/pricing.html" data-page="pricing">Pricing</a>
-            <a href="../005_contact/contact.html" data-page="contact">Contact Us</a>
+        <nav class="nav-center" style="display: flex; gap: 40px;">
+            <a href="../005_contact/005_contact.html" data-page="contact" style="color: #d2d0dd; text-decoration: none; font-size: 15px; font-weight: 500;">Contact</a>
         </nav>
         
-        <div class="nav-right">
-            <a href="#" class="nav-btn-login">Log in</a>
-            <a href="https://github.com/LucasAegis" target="_blank" class="nav-btn-signup">GitHub</a>
+        <div class="nav-right" style="display: flex; gap: 24px; align-items: center;">
+            <a href="https://github.com/chuanis" target="_blank" class="nav-btn-signup" style="color: #fff; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 24px; border-radius: 999px; text-decoration: none; font-size: 14px;">GitHub</a>
         </div>
     </header>
     `;
 
-    // 2. 将导航栏自动注入到网页最顶部
     document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-    // 3. 🎯 智能路由高亮逻辑：谁是当前页，谁就亮电光紫！
+    // 高亮逻辑（如果你以后增加了页面，这里会自动让当前页变紫）
     const currentPath = window.location.pathname.toLowerCase();
     const navLinks = document.querySelectorAll('.nav-center a');
-    
     navLinks.forEach(link => {
         const pageName = link.getAttribute('data-page');
-        // 只要浏览器的地址栏里包含了这个页面的名字（比如包含 index 或 pricing）
         if (currentPath.includes(pageName)) {
-            link.classList.add('active'); // 给它挂上 active 类名，CSS 就会让它爆闪紫光
+            link.style.color = "#887dff"; // 强制高亮电光紫
         }
     });
 });
