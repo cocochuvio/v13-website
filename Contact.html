@@ -9,36 +9,37 @@
     <link rel="stylesheet" href="assets/nav.css">
     
     <style>
+        /* 核心修改：让联系页强制全屏居中，不产生滚动 */
         .contact-container {
-            min-height: 80vh;
+            height: calc(100vh - 80px); /* 减去导航栏的高度 */
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 100px 20px;
+            overflow: hidden; /* 禁止溢出滚动 */
             z-index: 10;
         }
 
         .contact-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px;
+            padding: 50px;
             border-radius: 20px;
-            max-width: 600px;
-            width: 100%;
+            max-width: 550px;
+            width: 90%;
             text-align: left;
             backdrop-filter: blur(12px);
+            margin-top: -50px; /* 轻微向上偏移，优化视觉重心 */
         }
 
-        .label { color: #887dff; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        .name { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        .role { font-size: 18px; color: #d2d0dd; margin-bottom: 40px; line-height: 1.5; border-left: 2px solid #887dff; padding-left: 20px; }
+        .label { color: #887dff; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .name { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .role { font-size: 16px; color: #d2d0dd; margin-bottom: 30px; line-height: 1.5; border-left: 2px solid #887dff; padding-left: 15px; }
 
-        .info-item { margin-bottom: 20px; }
-        .info-label { font-size: 12px; color: #666; text-transform: uppercase; margin-bottom: 5px; }
-        .info-value { font-size: 16px; color: #fff; font-family: monospace; }
+        .info-item { margin-bottom: 15px; }
+        .info-label { font-size: 11px; color: #555; text-transform: uppercase; margin-bottom: 4px; }
+        .info-value { font-size: 15px; color: #fff; font-family: monospace; }
         
-        .footer-note { margin-top: 50px; font-size: 12px; color: #444; text-align: center; }
+        .footer-note { margin-top: 30px; font-size: 11px; color: #333; text-align: center; }
     </style>
 </head>
 <body>
