@@ -5,39 +5,44 @@
     <title>SafeLink Protocol | CHUANIS</title>
     <link rel="stylesheet" href="../../assets/background.css">
     <link rel="stylesheet" href="../../assets/nav.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         .layout-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px; }
         .sidebar { width: 200px; flex-shrink: 0; }
         .sidebar a { display: block; color: #d2d0dd; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .sidebar a:hover, .sidebar a.active { color: #887dff; border-color: #887dff; }
-        .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); }
+        
+        /* 右侧内容区：增加了 Markdown 专属的文章排版优化 */
+        .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); color: #e2e2e2; line-height: 1.8; }
+        .content-area h1 { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .content-area h2 { color: #887dff; margin-top: 30px; }
     </style>
 </head>
 <body>
     <main class="layout-container">
         <aside class="sidebar">
-            <a href="#" class="active" onclick="loadContent('specification.html', this)">说明书</a>
-            <a href="#" onclick="loadContent('claims.html', this)">权利要求</a>
-            <a href="#" onclick="loadContent('abstract.html', this)">摘要</a>
-            <a href="#" onclick="loadContent('figures.html', this)">幅图</a>
+            <a href="#" class="active" onclick="loadContent('specification.md', this)">说明书</a>
+            <a href="#" onclick="loadContent('claims.md', this)">权利要求</a>
+            <a href="#" onclick="loadContent('abstract.md', this)">摘要</a>
+            <a href="#" onclick="loadContent('figures.md', this)">幅图</a>
         </aside>
         <section class="content-area" id="content-box">
-            <!-- 默认加载内容 -->
-        </section>
+            </section>
     </main>
 
     <script src="../../assets/background.js"></script>
     <script src="../../assets/nav.js"></script>
     <script>
         function loadContent(page, element) {
-            fetch(page).then(res => res.text()).then(html => {
-                document.getElementById('content-box').innerHTML = html;
+            fetch(page).then(res => res.text()).then(text => {
+                // 将 Markdown 文本瞬间解析为高级 HTML 排版
+                document.getElementById('content-box').innerHTML = marked.parse(text);
             });
             document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
             element.classList.add('active');
         }
-        // 初始化：默认加载说明书
-        window.onload = () => loadContent('specification.html', document.querySelector('.sidebar a'));
+        // 初始化：默认加载说明书 MD 文件
+        window.onload = () => loadContent('specification.md', document.querySelector('.sidebar a'));
     </script>
 </body>
 </html>
