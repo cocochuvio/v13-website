@@ -17,11 +17,14 @@
             padding: 100px 20px;
             gap: 150px;
             z-index: 10;
+            position: relative; /* 确保内容层在最上方 */
         }
 
         .patent-section {
             max-width: 800px;
             text-align: center;
+            position: relative;
+            z-index: 20; /* 明确高于网格层 */
         }
 
         .archive-label {
@@ -49,6 +52,7 @@
             margin-bottom: 40px;
         }
 
+        /* ✨ 按钮容器：直接作为触发区，层级最高 */
         .glowing-btn-wrapper {
             position: relative;
             display: inline-block;
@@ -56,7 +60,10 @@
             border-radius: 999px;
             background: rgba(136, 125, 255, 0.3);
             animation: pulse 2s infinite;
+            cursor: pointer; /* 确保鼠标悬停时显示为可点击 */
+            pointer-events: auto; /* 确保事件穿透有效 */
         }
+        
         .glowing-btn {
             background: #0a0118;
             color: #fff;
@@ -66,16 +73,42 @@
             cursor: pointer;
             font-size: 16px;
             transition: 0.3s;
+            display: block;
+            pointer-events: auto;
         }
+        
         .glowing-btn:hover { background: #887dff; }
+
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(136, 125, 255, 0.4); }
             70% { box-shadow: 0 0 0 15px rgba(136, 125, 255, 0); }
             100% { box-shadow: 0 0 0 0 rgba(136, 125, 255, 0); }
         }
 
-        .cyber-grid-container { position: fixed; bottom: 0; width: 100%; height: 50vh; perspective: 600px; z-index: 0; mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%); }
-        .cyber-grid { position: absolute; width: 200%; height: 200%; bottom: -50%; left: -50%; background-image: linear-gradient(rgba(136, 125, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(136, 125, 255, 0.2) 1px, transparent 1px); background-size: 60px 60px; transform: rotateX(75deg); animation: gridMove 2s linear infinite; }
+        /* 背景容器不再遮挡任何点击 */
+        .cyber-grid-container { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            height: 50vh; 
+            perspective: 600px; 
+            z-index: 1; /* 降层 */
+            pointer-events: none; /* 绝对禁止网格容器响应鼠标 */
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%); 
+        }
+        
+        .cyber-grid { 
+            position: absolute; 
+            width: 200%; 
+            height: 200%; 
+            bottom: -50%; 
+            left: -50%; 
+            background-image: linear-gradient(rgba(136, 125, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(136, 125, 255, 0.2) 1px, transparent 1px); 
+            background-size: 60px 60px; 
+            transform: rotateX(75deg); 
+            animation: gridMove 2s linear infinite; 
+        }
+        
         @keyframes gridMove { 0% { transform: rotateX(75deg) translateY(0); } 100% { transform: rotateX(75deg) translateY(60px); } }
     </style>
 </head>
@@ -89,8 +122,8 @@
                 Official patent specifications for SafeLink physical-layer electrical connection safety protocol. 
                 Zero-communication design engineered for absolute safety in extreme environments (e.g., underwater applications).
             </p>
-            <div class="glowing-btn-wrapper">
-                <button class="glowing-btn" onclick="window.location.href='portfolio/safelink/index.html'">EXPLORE SAFELINK</button>
+            <div class="glowing-btn-wrapper" onclick="window.location.href='portfolio/safelink/index.html'">
+                <button class="glowing-btn">EXPLORE SAFELINK</button>
             </div>
         </section>
 
@@ -101,8 +134,8 @@
                 An offline continuous voice transcription and dynamic replacement method. 
                 Engineered for absolute privacy with asynchronous dual-track processing and zero-network dependency.
             </p>
-            <div class="glowing-btn-wrapper">
-                <button class="glowing-btn" onclick="window.location.href='portfolio/voice/index.html'">EXPLORE VOICE CORE</button>
+            <div class="glowing-btn-wrapper" onclick="window.location.href='portfolio/voice/index.html'">
+                <button class="glowing-btn">EXPLORE VOICE CORE</button>
             </div>
         </section>
 
