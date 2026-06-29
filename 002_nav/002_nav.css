@@ -1,0 +1,28 @@
+/* 002_nav/nav.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 40px;
+    z-index: 2000;
+    /* 背景保持绝对透明，让背景层的星空透出来 */
+    background: transparent; 
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: #d2d0dd; /* 默认灰色 */
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease; /* 优雅过渡 */
+}
+
+/* 交互逻辑：鼠标悬停变成电光紫 */
+.nav-links a:hover {
+    color: #887dff; /* 你网页里那个漂亮的电光紫颜色 */
+    text-shadow: 0 0 10px rgba(136, 125, 255, 0.5); /* 加个轻微发光效果，质感拉满 */
+}
