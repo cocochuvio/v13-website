@@ -9,94 +9,113 @@
     <link rel="stylesheet" href="../002_nav/002_nav.css">
     
     <style>
-        .index-hero {
-            position: relative;
-            text-align: center;
-            padding-top: 100px;
-            min-height: 100vh;
+        .index-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            padding: 100px 20px;
+            gap: 150px;
             z-index: 10;
         }
 
-        /* 专利卡片容器 */
-        .patent-container {
-            display: flex;
-            gap: 40px;
-            margin-top: 50px;
-            z-index: 10;
+        .patent-section {
+            max-width: 800px;
+            text-align: center;
         }
 
-        /* 卡片样式 */
-        .patent-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            width: 350px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        .patent-card:hover {
-            border-color: #887dff;
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(136, 125, 255, 0.2);
-        }
-
-        .patent-title { color: #fff; font-size: 24px; margin-bottom: 20px; }
-        .patent-desc { color: #d2d0dd; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-
-        /* ✨ 升级版动态按钮：流光呼吸效果 */
-        .btn-link {
-            display: inline-block;
-            padding: 12px 30px;
+        /* 专门补回的 Archive 标签 */
+        .archive-label {
+            font-size: 32px;
+            font-weight: 600;
             color: #fff;
-            text-decoration: none;
-            border: 1px solid #887dff;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 专利名称标题 */
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 20%, rgba(255, 255, 255, 0.6) 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: #d2d0dd;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* 按钮与动态效果 */
+        .glowing-btn-wrapper {
+            position: relative;
+            display: inline-block;
+            padding: 2px;
             border-radius: 999px;
-            font-size: 14px;
-            background: transparent;
-            transition: all 0.3s;
+            background: rgba(136, 125, 255, 0.3);
             animation: pulse 2s infinite;
         }
+        .glowing-btn {
+            background: #0a0118;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 999px;
+            border: 1px solid #887dff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .glowing-btn:hover { background: #887dff; }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(136, 125, 255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(136, 125, 255, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(136, 125, 255, 0); }
             100% { box-shadow: 0 0 0 0 rgba(136, 125, 255, 0); }
         }
-        .btn-link:hover { background: #887dff; }
 
-        /* 背景网格 */
-        .cyber-grid-container { position: absolute; bottom: 0; width: 100%; height: 50vh; perspective: 600px; z-index: 0; mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%); }
+        .cyber-grid-container { position: fixed; bottom: 0; width: 100%; height: 50vh; perspective: 600px; z-index: 0; mask-image: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 90%); }
         .cyber-grid { position: absolute; width: 200%; height: 200%; bottom: -50%; left: -50%; background-image: linear-gradient(rgba(136, 125, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(136, 125, 255, 0.2) 1px, transparent 1px); background-size: 60px 60px; transform: rotateX(75deg); animation: gridMove 2s linear infinite; }
         @keyframes gridMove { 0% { transform: rotateX(75deg) translateY(0); } 100% { transform: rotateX(75deg) translateY(60px); } }
     </style>
 </head>
 <body>
 
-    <main class="index-hero">
-        <h1 style="color: #fff; font-size: 48px; margin-bottom: 10px;">CHUANIS IP Portfolio</h1>
-        <p style="color: #887dff; margin-bottom: 50px;">Core Technological Patents & Blueprints</p>
-        
-        <div class="patent-container">
-            <div class="patent-card">
-                <h2 class="patent-title">SafeLink Protocol</h2>
-                <p class="patent-desc">Official patent specifications for SafeLink physical-layer electrical connection safety protocol. Zero-communication design engineered for absolute safety in extreme environments (e.g., underwater applications). (Patent CN 122225590 A)</p>
-                <a href="../007_blueprints/safelink.html" class="btn-link">VIEW SPECIFICATIONS</a>
+    <main class="index-container">
+        <!-- 专利 1: SafeLink -->
+        <section class="patent-section">
+            <div class="archive-label">Official Patent Archive</div>
+            <h1 class="hero-title">SafeLink Protocol<br>CN 122225590 A</h1>
+            <p class="hero-desc">
+                Official patent specifications for SafeLink physical-layer electrical connection safety protocol. 
+                Zero-communication design engineered for absolute safety in extreme environments (e.g., underwater applications).
+            </p>
+            <div class="glowing-btn-wrapper">
+                <button class="glowing-btn" onclick="window.location.href='../007_blueprints/safelink.html'">EXPLORE SAFELINK</button>
             </div>
+        </section>
 
-            <div class="patent-card">
-                <h2 class="patent-title">Voice Core</h2>
-                <p class="patent-desc">An offline continuous voice transcription and dynamic replacement method. Optimized for extreme edge-computing privacy with dual-track asynchronous processing. (Patent CN 122201305 A)</p>
-                <a href="../007_blueprints/voice.html" class="btn-link">VIEW SPECIFICATIONS</a>
+        <!-- 专利 2: Voice Core -->
+        <section class="patent-section">
+            <div class="archive-label">Official Patent Archive</div>
+            <h1 class="hero-title">Voice Core<br>CN 122201305 A</h1>
+            <p class="hero-desc">
+                An offline continuous voice transcription and dynamic replacement method. 
+                Engineered for absolute privacy with asynchronous dual-track processing and zero-network dependency.
+            </p>
+            <div class="glowing-btn-wrapper">
+                <button class="glowing-btn" onclick="window.location.href='../007_blueprints/voice.html'">EXPLORE VOICE CORE</button>
             </div>
-        </div>
+        </section>
 
         <div class="cyber-grid-container"><div class="cyber-grid"></div></div>
     </main>
 
     <script src="../001_background/001_global_bg.js"></script>
     <script src="../002_nav/002_nav.js"></script>
+
 </body>
 </html>
