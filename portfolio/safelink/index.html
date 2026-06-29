@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> <head>
+<html lang="zh-CN"> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeLink Protocol 说明书及权利要求 | CHUANIS 专利库</title>
-    <meta name="description" content="一种安全序列化电连接系统及方法 (Patent CN 122225590 A)。提供详细的专利说明书、权利要求、摘要及附图。">
+    <meta name="description" content="一种安全序列化电连接系统及方法 (Patent CN 122225590 A)。提供详细的专利说明书、权利要求、摘要及附图，并支持官方原始文件下载。">
     
     <link rel="stylesheet" href="../../assets/background.css">
     <link rel="stylesheet" href="../../assets/nav.css">
@@ -13,24 +14,47 @@
     <style>
         .layout-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px; align-items: flex-start; }
         
-        /* 侧边栏整体加宽，适配更长的专利名 */
-        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 120px; } 
+        .sidebar { width: 300px; flex-shrink: 0; position: sticky; top: 120px; } 
         
-        /* 新增：专利抬头与专利号样式 */
-        .patent-meta { margin-bottom: 25px; }
-        .patent-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
-        .patent-id { font-size: 13px; color: #887dff; font-family: monospace; letter-spacing: 0.5px; }
-        .sidebar-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 15px; }
+        /* 专利抬头与专利号优化 */
+        .patent-meta { margin-bottom: 30px; }
+        .patent-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.4; }
+        /* 专利号放大 */
+        .patent-id { font-size: 16px; font-weight: 600; color: #887dff; font-family: monospace; letter-spacing: 0.5px; margin-bottom: 20px; }
         
-        /* 左侧菜单字体调大到 16px */
+        /* 官方文件下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(136, 125, 255, 0.1);
+            border: 1px solid rgba(136, 125, 255, 0.5);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            background: rgba(136, 125, 255, 0.3);
+            border-color: #887dff;
+            box-shadow: 0 0 15px rgba(136, 125, 255, 0.4);
+        }
+
+        .sidebar-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 15px; margin-top: 25px; }
+        
+        /* 左侧菜单：已修正为“附图” */
         .sidebar-nav a { display: block; color: #d2d0dd; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; font-size: 16px; font-weight: 500; }
-        .sidebar-nav a:hover, .sidebar-nav a.active { color: #887dff; border-color: #887dff; padding-left: 10px; /* 悬停时微微右移，增加高级感 */ }
+        .sidebar-nav a:hover, .sidebar-nav a.active { color: #887dff; border-color: #887dff; padding-left: 10px; }
         
         /* 右侧内容区排版 */
         .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); color: #e2e2e2; line-height: 1.8; font-size: 16px; }
         .content-area h1 { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 30px; }
         .content-area h2 { color: #887dff; margin-top: 40px; margin-bottom: 15px; }
         .content-area p { margin-bottom: 20px; text-align: justify; }
+        
+        /* 附图专属样式：让图片响应式居中，带高级阴影 */
+        .content-area img { max-width: 100%; height: auto; border-radius: 12px; margin-bottom: 40px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
@@ -39,6 +63,7 @@
             <div class="patent-meta">
                 <div class="patent-name">一种安全序列化电连接系统及方法</div>
                 <div class="patent-id">Patent CN 122225590 A</div>
+                <a href="一种安全序列化电连接系统及方法.pdf" download class="download-btn">📥 下载官方原始文献 (PDF)</a>
             </div>
             
             <hr class="sidebar-divider">
@@ -47,7 +72,7 @@
                 <a href="specification.md" class="active">说明书</a>
                 <a href="claims.md">权利要求</a>
                 <a href="abstract.md">摘要</a>
-                <a href="figures.md">幅图</a>
+                <a href="#figures" data-type="images">附图</a>
             </nav>
         </aside>
 
@@ -59,7 +84,6 @@
     <script src="../../assets/nav.js"></script>
     
     <script>
-        // 加载内容的函数
         function loadContent(page, element) {
             fetch(page).then(res => res.text()).then(text => {
                 document.getElementById('content-box').innerHTML = marked.parse(text);
@@ -67,23 +91,36 @@
                 document.getElementById('content-box').innerHTML = "<p>文档加载失败，请检查文件是否存在。</p>";
             });
             
-            // 切换高亮状态
             document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
             if(element) element.classList.add('active');
         }
 
-        // SEO 黑科技：劫持所有左侧链接的点击事件
-        // 人类点击时，阻止浏览器打开新页面，而是使用 js 无刷新加载内容
-        // 爬虫不会执行这段劫持代码，它会直接顺着 href 去爬 MD 文件
+        // 核心劫持逻辑：区分 MD 文件和纯图片展示
         document.querySelectorAll('.sidebar-nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault(); 
+                
+                const isImages = this.getAttribute('data-type') === 'images';
                 const page = this.getAttribute('href');
-                loadContent(page, this);
+                
+                if (isImages) {
+                    // 如果点击的是“附图”，直接注入图片代码，不走 Markdown 解析
+                    document.getElementById('content-box').innerHTML = `
+                        <h1>附图</h1>
+                        <img src="通信禁区系统架构图1.png" alt="通信禁区系统架构图1">
+                        <img src="通信禁区系统架构图2.png" alt="通信禁区系统架构图2">
+                    `;
+                    // 更新高亮状态
+                    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                } else {
+                    // 如果点击的是 MD 文档，走正常加载逻辑
+                    loadContent(page, this);
+                }
             });
         });
 
-        // 初始化：默认加载说明书
+        // 网页初始化时，默认加载说明书
         window.onload = () => {
             const defaultLink = document.querySelector('.sidebar-nav a[href="specification.md"]');
             loadContent('specification.md', defaultLink);
