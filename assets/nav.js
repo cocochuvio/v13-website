@@ -3,20 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // 导航栏骨架：链接地址已适配根目录结构
     const navHTML = `
-    <header class="global-navbar">
-        <a href="index.html" class="nav-logo">CHUANIS</a>
-        
-        <nav class="nav-center">
-            <a href="index.html" data-page="index">INNOVATION</a>
-            <a href="portfolio.html" data-page="portfolio">PORTFOLIO</a>
-            <a href="blueprints/index.html" data-page="blueprints">BLUEPRINTS</a>
-            <a href="Contact.html" data-page="contact">CONTACT</a>
-        </nav>
-        
-        <div class="nav-right">
-            <a href="https://github.com/chuanis" target="_blank" class="nav-btn-signup">GITHUB</a>
-        </div>
-    </header>
+   <header class="global-navbar">
+    <a href="/index.html" class="nav-logo">CHUANIS</a>
+    
+    <nav class="nav-center">
+        <a href="/index.html" data-page="index">INNOVATION</a>
+        <a href="/portfolio.html" data-page="portfolio">PORTFOLIO</a>
+        <a href="/portfolio/Stealth/index.html" data-page="blueprints">BLUEPRINTS</a>
+        <a href="/Contact.html" data-page="contact">CONTACT</a>
+    </nav>
+    
+    <div class="nav-right">
+        <a href="https://github.com/chuanis" target="_blank" class="nav-btn-signup">GITHUB</a>
+    </div>
+</header>
     `;
 
     // 注入导航栏
