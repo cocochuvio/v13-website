@@ -1,4 +1,4 @@
-/* 002_nav/002_nav.css - CHUANIS 全局导航样式 (已移除背景条与边框) */
+/* 002_nav/002_nav.css - 全局导航栏样式 */
 
 .global-navbar {
     position: sticky;
@@ -8,14 +8,11 @@
     align-items: center;
     padding: 20px 40px;
     z-index: 2000;
-    
-    /* 核心修改：彻底透明，没有任何背景颜色或毛玻璃效果 */
-    background: transparent !important; 
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    
-    /* 核心修改：移除底部那条碍眼的线 */
-    border-bottom: none !important;
+    /* 采用毛玻璃背景，让底层的星空透过来，极具高级感 */
+    background: rgba(10, 1, 24, 0.7); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-logo {
@@ -23,7 +20,7 @@
     font-weight: bold;
     text-decoration: none;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .nav-center {
@@ -34,29 +31,38 @@
 .nav-center a {
     color: #d2d0dd; /* 默认静谧灰 */
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-/* 交互逻辑：悬停爆发电光紫 */
+/* ✨ 核心逻辑：鼠标悬停，或者被 JS 标记为 active（当前页）时，爆发电光紫 */
 .nav-center a:hover,
 .nav-center a.active {
     color: #887dff; 
     text-shadow: 0 0 12px rgba(136, 125, 255, 0.6); 
 }
 
+/* 右侧按钮区域 */
 .nav-right {
     display: flex;
     gap: 24px;
     align-items: center;
 }
 
+.nav-btn-login {
+    color: #d2d0dd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.nav-btn-login:hover {
+    color: #fff;
+}
+
 .nav-btn-signup {
     color: #fff;
-    /* 保持按钮的微弱磨砂感，如果你觉得按钮也想完全透明，可以把 background 设为 transparent */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 24px;
@@ -64,8 +70,6 @@
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 .nav-btn-signup:hover {
     background: rgba(255, 255, 255, 0.1);
