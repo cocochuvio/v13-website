@@ -7,17 +7,18 @@ body {
     background-color: #0a0118; /* 纯粹的极夜黑底色 */
     color: #fff;
     font-family: system-ui, -apple-system, sans-serif;
-    min-height: 100vh; /* 保证页面至少有一屏高 */
+    /* 优化：使用 dvh 完美适配现代智能手机的动态地址栏 */
+    min-height: 100dvh; 
     overflow-x: hidden; /* 防止横向滚动条 */
 }
 
 /* 2. 将星空画布死死钉在屏幕最底层 */
 #star-canvas {
-    position: fixed; /* 核心：固定定位！不论网页内容怎么往下滑，星空永远在原地 */
+    position: fixed; /* 核心：不论网页内容怎么滑动，星空永远在原地 */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: -999; /* 永远在所有内容的最低层 */
-    pointer-events: none; /* 让鼠标事件穿透它，不影响网页文字的点击 */
+    pointer-events: none; /* 让鼠标事件穿透，绝不影响网页点击 */
 }
