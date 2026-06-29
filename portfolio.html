@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO | CHUANIS</title>
+    
+    <link rel="stylesheet" href="assets/background.css">
+    <link rel="stylesheet" href="assets/nav.css">
+    
+    <style>
+        .portfolio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 80px 20px;
+            gap: 60px;
+            z-index: 10;
+        }
+
+        .patent-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            text-align: left;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .patent-card:hover {
+            border-color: #887dff;
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(136, 125, 255, 0.15);
+        }
+
+        .category-label { color: #887dff; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .patent-title { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 15px; }
+        .patent-desc { font-size: 16px; color: #d2d0dd; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <main class="portfolio-container">
+        <div class="patent-card" onclick="window.location.href='portfolio/safelink/index.html'">
+            <span class="category-label">Physical-Layer Protocol</span>
+            <h2 class="patent-title">SafeLink Protocol</h2>
+            <p class="patent-desc">Official patent specifications for SafeLink physical-layer electrical connection safety protocol. Zero-communication design engineered for absolute safety in extreme environments.</p>
+        </div>
+
+        <div class="patent-card" onclick="window.location.href='portfolio/stealth/index.html'">
+            <span class="category-label">Communication Architecture</span>
+            <h2 class="patent-title">Stealth-Comm</h2>
+            <p class="patent-desc">Official patent specifications for physical-layer stealth communication. Engineered to achieve asynchronous state synchronization and secure data transmission in zero-network environments.</p>
+        </div>
+
+        <div class="patent-card" onclick="window.location.href='portfolio/voice/index.html'">
+            <span class="category-label">AI Transcription Core</span>
+            <h2 class="patent-title">Voice Core</h2>
+            <p class="patent-desc">Official patent specifications for offline continuous voice transcription. Optimized for edge-computing privacy with asynchronous dual-track processing.</p>
+        </div>
+    </main>
+
+    <script src="assets/background.js"></script>
+    <script src="assets/nav.js"></script>
+</body>
+</html>

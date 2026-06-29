@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeLink Protocol | CHUANIS</title>
+    <link rel="stylesheet" href="../../assets/background.css">
+    <link rel="stylesheet" href="../../assets/nav.css">
+    <style>
+        .layout-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px; }
+        .sidebar { width: 200px; flex-shrink: 0; }
+        .sidebar a { display: block; color: #d2d0dd; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .sidebar a:hover, .sidebar a.active { color: #887dff; border-color: #887dff; }
+        .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body>
+    <main class="layout-container">
+        <aside class="sidebar">
+            <a href="#" class="active" onclick="loadContent('specification.html', this)">说明书</a>
+            <a href="#" onclick="loadContent('claims.html', this)">权利要求</a>
+            <a href="#" onclick="loadContent('abstract.html', this)">摘要</a>
+            <a href="#" onclick="loadContent('figures.html', this)">幅图</a>
+        </aside>
+        <section class="content-area" id="content-box">
+            <!-- 默认加载内容 -->
+        </section>
+    </main>
+
+    <script src="../../assets/background.js"></script>
+    <script src="../../assets/nav.js"></script>
+    <script>
+        function loadContent(page, element) {
+            fetch(page).then(res => res.text()).then(html => {
+                document.getElementById('content-box').innerHTML = html;
+            });
+            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+            element.classList.add('active');
+        }
+        // 初始化：默认加载说明书
+        window.onload = () => loadContent('specification.html', document.querySelector('.sidebar a'));
+    </script>
+</body>
+</html>

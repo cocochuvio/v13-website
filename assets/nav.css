@@ -1,0 +1,73 @@
+/* assets/nav.css - CHUANIS 全局导航样式 (毛玻璃效果版) */
+
+.global-navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 2000;
+    
+    /* 毛玻璃核心效果 */
+    background: rgba(10, 1, 24, 0.7); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* 修正：如果之前有奇怪横条，是因为边框导致的，这里明确移除底部边框 */
+    border-bottom: none; 
+}
+
+.nav-logo {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.nav-center {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-center a {
+    color: #d2d0dd; 
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ✨ 电光紫交互效果 */
+.nav-center a:hover,
+.nav-center a.active {
+    color: #887dff; 
+    text-shadow: 0 0 12px rgba(136, 125, 255, 0.6); 
+}
+
+.nav-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+/* GitHub 按钮 */
+.nav-btn-signup {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.nav-btn-signup:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
