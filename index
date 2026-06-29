@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patent CN 122201305 A | Aegis Voice Titan V13</title>
+    
+    <style>
+        /* =========================================
+           1. 全局极致黑底与重置 (Global Reset)
+           ========================================= */
+        body {
+            background-color: #0a0118;
+            color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* ✨ V2.0 核心：纯 CSS 渲染的电光紫环境底光（绝不侵权） */
+            background-image: 
+                radial-gradient(ellipse at 50% 10%, rgba(113, 61, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 80%, rgba(133, 102, 255, 0.2) 0%, transparent 60%);
+        }
+        * { box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; }
+
+        /* =========================================
+           2. 顶部极简导航栏 (Header)
+           ========================================= */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 40px;
+            position: relative;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-logo { font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+
+        /* =========================================
+           3. 核心战场区域 (Hero Section)
+           ========================================= */
+        .content-asst-hero {
+            position: relative;
+            text-align: center;
+            padding-top: 130px;
+            padding-bottom: 100px;
+            z-index: 100;
+        }
+        
+        /* ✨ V2.0 核心：标题背后的高强度紫光爆点 */
+        .ambient-core-light {
+            position: absolute;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 400px;
+            background: radial-gradient(circle, rgba(133, 98, 255, 0.25) 0%, rgba(10, 1, 24, 0) 70%);
+            z-index: 1; pointer-events: none;
+            filter: blur(40px);
+        }
+
+        .content-asst-hero-container {
+            position: relative;
+            z-index: 100;
+        }
+        .content-asst-hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 80px;
+            background: linear-gradient(180deg, #fff 22.5%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+        .content-asst-hero-description {
+            font-size: 20px;
+            color: #d2d0dd;
+            max-width: 860px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           4. 赛博朋克霓虹网格背景动画 (Hero Background)
+           ========================================= */
+        .hero-background {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1248px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .hero-background-bottom {
+            height: 530px;
+            position: relative;
+            width: 100%;
+        }
+        .hero-background-bottom-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            mix-blend-mode: screen;
+            z-index: 12;
+            opacity: 0.6;
+        }
+        /* 动态射线基础类 */
+        .hero-background-bottom-line-animation,
+        .hero-background-bottom-ray-animation {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 530px;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            overflow: hidden;
+            z-index: 15;
+        }
+        
+        /* ✨ V2.0 修复：将动画光束的颜色改为纯正的电光紫 */
+        .hero-background-bottom-line-animation div {
+            height: 150px; width: 100%;
+            background: linear-gradient(180deg, rgba(183,164,251,0) 0, rgba(183,164,251,.8) 100%, rgba(133,98,255,.8) 100%, rgba(133,98,255,0) 0%);
+            animation: lineAnimation 4s infinite cubic-bezier(.62,.62,.14,1);
+            transform: translateY(-530px);
+        }
+        .hero-background-bottom-ray-animation div {
+            height: 530px; width: 100%;
+            background-image: linear-gradient(180deg, rgba(183,164,251,0) 10%, rgba(183,164,251,.4) 26%, rgba(183,164,251,0) 37.5%);
+            animation: bottomRayAnimation 10s infinite cubic-bezier(.62,.62,0,1);
+        }
+
+        @keyframes lineAnimation {
+            0%, 100% { transform: translateY(-530px); }
+            99% { transform: translateY(400px); }
+        }
+        @keyframes bottomRayAnimation {
+            0%, 49% { transform: translateY(-530px); }
+            68%, 88% { transform: translateY(0); }
+            99% { transform: translateY(530px); }
+            100% { transform: translateY(-530px); }
+        }
+
+        /* =========================================
+           5. 史诗级发光星空按钮 (Glowing Button)
+           ========================================= */
+        .glowing-box {
+            display: inline-block;
+            position: relative;
+            border-radius: 999px;
+            overflow: hidden;
+            padding: 2px;
+        }
+        .glowing-box-borders {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            transform: translate(-50%, -50%);
+            background-image: conic-gradient(from 0 at 50% 50%, rgba(255,255,255,.6) 0deg, rgba(255,255,255,0) 60deg, rgba(255,255,255,0) 310deg, rgba(255,255,255,.6) 360deg);
+            animation: borderTurn 4s infinite linear;
+        }
+        .glowing-box-button {
+            position: relative;
+            background: rgba(20, 11, 37, 0.9);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            padding: 14px 40px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .glowing-box-button span {
+            font-size: 18px;
+            font-weight: 500;
+            background: linear-gradient(180deg, rgba(255,255,255,.8) 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        @keyframes borderTurn {
+            0% { transform: translate(-50%, -50%) rotate(0); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <a href="#" class="header-logo">🛡️ AEGIS TITAN</a>
+        <div style="color: #9b96b0; font-size: 14px;">100% Offline AI Voice Architecture</div>
+    </header>
+
+    <!-- 背景特效容器 -->
+    <div class="hero-background">
+        <div class="hero-background-bottom">
+            <!-- 静态底层网格图 -->
+            <div class="hero-background-bottom-background">
+                <img src="./Wope_ The New Era of SEO Research_files/hero-background-bottom.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Neon Grid">
+            </div>
+            <!-- 横向透视扫描线 -->
+            <div class="hero-background-bottom-line-animation" style="-webkit-mask-image: url('./Wope_ The New Era of SEO Research_files/hero-background-bottom-line-1.png');"><div></div></div>
+            <div class="hero-background-bottom-line-animation" style="-webkit-mask-image: url('./Wope_ The New Era of SEO Research_files/hero-background-bottom-line-2.png');" style="animation-delay: 1s;"><div></div></div>
+            <div class="hero-background-bottom-line-animation" style="-webkit-mask-image: url('./Wope_ The New Era of SEO Research_files/hero-background-bottom-line-3.png');" style="animation-delay: 2s;"><div></div></div>
+            <!-- 纵向光芒射线 -->
+            <div class="hero-background-bottom-ray-animation" style="-webkit-mask-image: url('./Wope_ The New Era of SEO Research_files/hero-background-bottom-ray.png');"><div></div></div>
+        </div>
+    </div>
+
+    <!-- 核心文字区 -->
+    <section class="content-asst-hero">
+        <!-- ✨ V2.0 新增的中心环境光点 -->
+        <div class="ambient-core-light"></div>
+        
+        <div class="content-asst-hero-container">
+            <h1 class="content-asst-hero-title">Official Patent Archive<br>CN 122201305 A</h1>
+            <p class="content-asst-hero-description">
+                The ultimate on-device AI transcription architecture.<br>
+                Engineered for absolute privacy with asynchronous dual-track processing and zero-network dependency.
+            </p>
+            
+            <!-- 酷炫星空发光按钮 -->
+            <div class="glowing-box">
+                <div class="glowing-box-borders"></div>
+                <button class="glowing-box-button" onclick="alert('专利架构即将展现！')">
+                    <span>Explore Architecture</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
