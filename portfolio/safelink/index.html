@@ -1,48 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="zh-CN"> <head>
     <meta charset="UTF-8">
-    <title>SafeLink Protocol | CHUANIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeLink Protocol 说明书及权利要求 | CHUANIS 专利库</title>
+    <meta name="description" content="一种安全序列化电连接系统及方法 (Patent CN 122225590 A)。提供详细的专利说明书、权利要求、摘要及附图。">
+    
     <link rel="stylesheet" href="../../assets/background.css">
     <link rel="stylesheet" href="../../assets/nav.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
     <style>
-        .layout-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px; }
-        .sidebar { width: 200px; flex-shrink: 0; }
-        .sidebar a { display: block; color: #d2d0dd; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .sidebar a:hover, .sidebar a.active { color: #887dff; border-color: #887dff; }
+        .layout-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px; align-items: flex-start; }
         
-        /* 右侧内容区：增加了 Markdown 专属的文章排版优化 */
-        .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); color: #e2e2e2; line-height: 1.8; }
-        .content-area h1 { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .content-area h2 { color: #887dff; margin-top: 30px; }
+        /* 侧边栏整体加宽，适配更长的专利名 */
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 120px; } 
+        
+        /* 新增：专利抬头与专利号样式 */
+        .patent-meta { margin-bottom: 25px; }
+        .patent-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+        .patent-id { font-size: 13px; color: #887dff; font-family: monospace; letter-spacing: 0.5px; }
+        .sidebar-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 15px; }
+        
+        /* 左侧菜单字体调大到 16px */
+        .sidebar-nav a { display: block; color: #d2d0dd; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; font-size: 16px; font-weight: 500; }
+        .sidebar-nav a:hover, .sidebar-nav a.active { color: #887dff; border-color: #887dff; padding-left: 10px; /* 悬停时微微右移，增加高级感 */ }
+        
+        /* 右侧内容区排版 */
+        .content-area { flex-grow: 1; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 20px; min-height: 60vh; backdrop-filter: blur(10px); color: #e2e2e2; line-height: 1.8; font-size: 16px; }
+        .content-area h1 { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 30px; }
+        .content-area h2 { color: #887dff; margin-top: 40px; margin-bottom: 15px; }
+        .content-area p { margin-bottom: 20px; text-align: justify; }
     </style>
 </head>
 <body>
     <main class="layout-container">
         <aside class="sidebar">
-            <a href="#" class="active" onclick="loadContent('specification.md', this)">说明书</a>
-            <a href="#" onclick="loadContent('claims.md', this)">权利要求</a>
-            <a href="#" onclick="loadContent('abstract.md', this)">摘要</a>
-            <a href="#" onclick="loadContent('figures.md', this)">幅图</a>
+            <div class="patent-meta">
+                <div class="patent-name">一种安全序列化电连接系统及方法</div>
+                <div class="patent-id">Patent CN 122225590 A</div>
+            </div>
+            
+            <hr class="sidebar-divider">
+            
+            <nav class="sidebar-nav">
+                <a href="specification.md" class="active">说明书</a>
+                <a href="claims.md">权利要求</a>
+                <a href="abstract.md">摘要</a>
+                <a href="figures.md">幅图</a>
+            </nav>
         </aside>
-        <section class="content-area" id="content-box">
-            </section>
+
+        <article class="content-area" id="content-box">
+            </article>
     </main>
 
     <script src="../../assets/background.js"></script>
     <script src="../../assets/nav.js"></script>
+    
     <script>
+        // 加载内容的函数
         function loadContent(page, element) {
             fetch(page).then(res => res.text()).then(text => {
-                // 将 Markdown 文本瞬间解析为高级 HTML 排版
                 document.getElementById('content-box').innerHTML = marked.parse(text);
+            }).catch(err => {
+                document.getElementById('content-box').innerHTML = "<p>文档加载失败，请检查文件是否存在。</p>";
             });
-            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-            element.classList.add('active');
+            
+            // 切换高亮状态
+            document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+            if(element) element.classList.add('active');
         }
-        // 初始化：默认加载说明书 MD 文件
-        window.onload = () => loadContent('specification.md', document.querySelector('.sidebar a'));
+
+        // SEO 黑科技：劫持所有左侧链接的点击事件
+        // 人类点击时，阻止浏览器打开新页面，而是使用 js 无刷新加载内容
+        // 爬虫不会执行这段劫持代码，它会直接顺着 href 去爬 MD 文件
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                const page = this.getAttribute('href');
+                loadContent(page, this);
+            });
+        });
+
+        // 初始化：默认加载说明书
+        window.onload = () => {
+            const defaultLink = document.querySelector('.sidebar-nav a[href="specification.md"]');
+            loadContent('specification.md', defaultLink);
+        };
     </script>
 </body>
 </html>
